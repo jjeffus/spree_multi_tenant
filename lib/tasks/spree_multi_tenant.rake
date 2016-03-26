@@ -31,4 +31,41 @@ namespace :spree_multi_tenant do
     tenant = do_create_tenant ENV["domain"], ENV["code"]
   end
 
+  desc "Create a new admin user for tenant"
+  task :add_user => :environment do
+    tenant_name     = ENV['tenant']
+    email          = ENV["email"]
+    password       = ENV["password"]
+    tenant = Spree::Tenant.find_by(code: tenant_name)
+    if tenant == nil
+      say "\nWARNING: There is no tenant with name #{name}, so no account changes were made."
+      exit
+    end
+    if Spree::User.find_by_email(email)
+      say "\nWARNING: There is already a user with the email: #{email}, so no account changes were made."
+    else
+      attributes = {
+        :password => password,
+        :password_confirmation => password,
+        :email => email,
+        :login => email
+      }
+
+      admin = Spree::User.new(attributes)
+      if admin.save
+        role = Spree::Role.find_or_create_by(name: 'admin')
+        admin.spree_roles << role
+        admin.tenant_id = tenant.id
+        admin.save
+        admin.generate_spree_api_key!
+        say "Done!"
+      else
+        say "There was some problems with persisting new admin user:"
+        admin.errors.full_messages.each do |error|
+          say error
+        end
+      end
+    end
+  end
+
 end
