@@ -62,7 +62,7 @@ module SpreeMultiTenant
       Spree::Promotion,
       Spree::PromotionRule,
       Spree::PromotionAction,
-      # Spree::PromotionActionLineItem,
+      Spree::PromotionActionLineItem,
       #Spree::Promotion::Actions::CreateLineItems,
       #Spree::Promotion::Actions::CreateAdjustment,
       #Spree::Promotion::Rules::FirstOrder,
