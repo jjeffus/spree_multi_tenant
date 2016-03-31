@@ -18,7 +18,7 @@ end
 SpreeMultiTenant.tenanted_controllers.each do |controller|
   controller.class_eval do
 
-    prepend_around_filter :tenant_scope
+    prepend_around_action :tenant_scope
 
     def current_tenant
       Multitenant.current_tenant
