@@ -31,7 +31,7 @@ module SpreeMultiTenant
       Spree::ReturnAuthorization,
       Spree::Role,
       Spree::Shipment,
-      # Spree::ShippingCategory,
+      Spree::ShippingCategory,
       Spree::ShippingMethod,
       Spree::ShippingMethodCategory,
       Spree::ShippingRate,
