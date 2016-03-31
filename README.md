@@ -1,10 +1,7 @@
 SpreeMultiTenant
 ================
 
-[![Build Status](https://travis-ci.org/stefansenk/spree_multi_tenant.png?branch=master)](https://travis-ci.org/stefansenk/spree_multi_tenant)
-
-Adds multi-tenant support to Spree. Allows completely separate Spree sites with separate admins to be run from the same installation.
-
+Fork of stefansenk's spree_multi_tenant gem upated to work with Solidus 1.2.0. Adds multi-tenant support to Solidus. Allows completely separate Solidus sites with separate admins to be run from the same installation. 
 
 Install
 =======
@@ -12,9 +9,9 @@ Install
 Gemfile:
 
 ```ruby
-gem 'spree', github: 'spree/spree', branch: '2-2-stable'
-gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '2-2-stable'
-gem 'spree_multi_tenant', github: 'stefansenk/spree_multi_tenant', branch: '2-2-stable'
+gem 'solidus'
+gem 'solidus_auth_devise'
+gem 'spree_multi_tenant', branch: '2-2-stable'
 ```
 
 ```shell
